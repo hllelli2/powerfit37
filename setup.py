@@ -58,7 +58,7 @@ def main():
           install_requires=['numpy>=1.23.0', 'scipy'],
           entry_points={
               'console_scripts': [
-                  'powerfit = powerfit.powerfit:run',
+                  'powerfit = powerfit.main:main',
                   'image-pyramid = powerfit.scripts:image_pyramid',
                   'em2em = powerfit.scripts:em2em',
                   ]
