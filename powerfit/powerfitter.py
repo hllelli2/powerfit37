@@ -1,10 +1,10 @@
 # Original repsositry by haddock labs,
 # licensed under the Apache License, Version 2.0.
 
-# Modified by Luc Elliott, 24/04/2023, with the following modifications: 
+# Modified by Luc Elliott, 24/04/2023, with the following modifications:
 #   Updated the code to be compatible with Python 3.8.
 
-# For more information about the original code, please see https://github.com/haddocking/powerfit. 
+# For more information about the original code, please see https://github.com/haddocking/powerfit.
 
 # Your modified code follows...
 
@@ -173,7 +173,7 @@ class PowerFitter(object):
         # Combine all the intermediate results
         lcc = np.zeros(self._target.shape)
         rot = np.zeros(self._target.shape)
-        ind = np.zeros(lcc.shape, dtype=np.bool)
+        ind = np.zeros(lcc.shape, dtype=bool)
         for n in range(self._njobs):
             lcc_file = join(self._directory, "_lcc_part_{:d}.npy").format(n)
             rot_file = join(self._directory, "_rot_part_{:d}.npy").format(n)
@@ -309,7 +309,7 @@ class CPUCorrelator(BaseCorrelator):
         arrays = "_rot_template _rot_mask _rot_mask2 _gcc _ave _ave2 _lcc_scan _lcc _rot".split()
         for arr in arrays:
             setattr(self, arr, self._allocate_array(shape, np.float64, self._fftw))
-        self._ind = np.zeros(shape, dtype=np.bool)
+        self._ind = np.zeros(shape, dtype=bool)
 
         # complex arrays
         self._ft_shape = self._get_ft_shape(shape)
@@ -447,7 +447,6 @@ if OPENCL:
             )
 
         def _allocate_arrays(self):
-
             # Determine the required shape and size of an array
             self._ft_shape = tuple(
                 [self._target.shape[0] // 2 + 1] + list(self._target.shape[1:])
@@ -558,7 +557,6 @@ if OPENCL:
                 self._cl_get_gcc()
                 self._cl_get_ave()
                 self._cl_get_ave2()
-                
 
                 self._k.calc_lcc_and_take_best(
                     self._gcc,
